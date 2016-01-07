@@ -1,0 +1,33 @@
+<template name="UserList">
+	{{#if currentUser}}
+  <div class="user-list">
+    <h1>User Accounts</h1>
+    	{{#linkTo route="addUser"}}
+    	<button type="button" class="btn btn-primary">
+    	Add New User
+    	</button>
+    	{{/linkTo}}
+   
+    <table class="table table=hover">
+    	<thead>
+    		<tr>
+    			<th>Email</th>
+    			<th>Account Type</th>
+    			<th>Edit</th>
+    			<th>Delete Account</th>
+    		</tr>
+       	</thead>
+        <tbody>
+          {{#each userDB}}
+          <tr class = "userAccounts {{selectedClass}}">
+            <td>{{emails.[0].address}}</td>
+            <td>{{profile.type}}</td>
+            <td>{{#linkTo route='EditUser'}}<span class="glyphicon glyphicon-edit {{deleteThisGuy}}" aria-hidden="true"></span>{{/linkTo}}</td>
+            <td><span class="glyphicon glyphicon-remove theDeleteButton"></span></td>           
+          </tr>  
+          {{/each}}
+       	</tbody>
+      </table>
+  </div>
+   {{/if}}
+</template>

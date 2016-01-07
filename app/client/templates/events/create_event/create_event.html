@@ -1,4 +1,6 @@
 <template name="CreateEvent">
+{{#if isManager}}
   <h1>Create New Event</h1>
-  {{> quickForm collection="Events" id="insertEventForm" type="insert" omitFields="createdBy, createdAt" buttonContent="Create"}}
+  {{> quickForm collection="Events" id="insertEventForm" type="insert" omitFields="createdBy, createdAt, createdFromAccount" buttonContent="Create"}}
+  {{/if}}
 </template>

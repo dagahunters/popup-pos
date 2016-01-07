@@ -6,6 +6,7 @@ HomeController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
+    this.subscribe('userData');
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -34,6 +35,7 @@ HomeController = RouteController.extend({
     this.next();
   },
   onBeforeAction: function () {
+  
     this.next();
   },
   

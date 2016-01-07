@@ -1,0 +1,59 @@
+<!--<template name="Adduser">
+  <h1>Add a new user</h1>
+  {{> quickForm collection="Newuser" id="addUserForm" type="insert" omitFields="createdBy, createdAt" buttonContent="Create"}}
+</template>
+
+--> <template name="Adduser">
+	<h1>Add a new user</h1>
+	<form class="Adduser">
+	<p><h3><span class="label label-default">Email:</span> <input type="email" name="email"></h3></p>
+        <p><h3><span class="label label-default">Password:</span> <input type="password" name="password"></h3></p>
+        <p><h3><span class="label label-default">Confirm Password:</span> <input type="password" name="confirmPassword"></h3></p>
+        <p><h3><span class="label label-default">Account Type:</span></h3> 
+        	<select class="form-control" name ="accountType">
+        		<option value="Server">Server</option>
+        		<option value="Chef">Chef</option>
+        		<option value="Manager">Manager</option>
+        	</select>
+        	</p>
+        <p><input type="submit" class="btn btn-primary" value="Adduser"></p>
+
+    </form>
+</template> 
+
+<!--<template name="Adduser">
+    <h1>Add a new user</h1>
+    <form class="form-horizontal Adduser">
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email">
+        </div>
+    </div>
+    <div class ="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label"> Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+        </div>
+    </div>
+    <div class ="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Confirm Here" name="confirmPassword">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="accountType" class="col-sm-2 control-label">Account Type</label>
+        <div class="col-sm-10">
+            <select name="accountType">
+                <option value="Server">Server</option>
+                <option value="Chef">Chef</option>
+                <option value="Manager">Manager</option>
+            </select>
+        </div>
+    </div>    
+    <p><input type="submit" value="Adduser"></p>
+
+    </form>
+</template>
+-->
