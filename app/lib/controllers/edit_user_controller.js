@@ -6,6 +6,8 @@ EditUserController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
+    //this.subscribe('users');
+    this.subscribe('userDB');
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -23,6 +25,7 @@ EditUserController = RouteController.extend({
   // return Posts.findOne({_id: this.params._id});
   
   data: function () {
+        return Meteor.users.findOne({_id: this.params._id});
   },
   
   // You can provide any of the hook options
@@ -51,5 +54,9 @@ EditUserController = RouteController.extend({
   onAfterAction: function () {
   },
   onStop: function () {
+  },
+
+  edit: function(){
+    this.render('EditUser', {});
   }
 });

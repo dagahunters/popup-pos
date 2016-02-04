@@ -1,0 +1,18 @@
+<template name="AddTable">
+  <div class="add-table">
+    <h1>Add New Table</h1>
+    	<!--{{> quickForm collection="Tables" id="insertTableForm" type="insert" omitFields="createdBy, createdAt" buttonContent="Add"}}-->
+    </div>
+    <div>
+    	{{#autoForm schema=eventFormSchema collection="Tables" id="addTableForm" type="insert" omitFields="createdForEvent"}}
+    	<legend>Event</legend>
+    	{{> afQuickField name="tableName"}}
+    	{{> afQuickField name="guestCount"}}
+    	{{> afQuickField name="createdForEvent" value=chooseEvent}} <!--options=chooseEvent}}-->
+    	<div>
+    		<button type="submit" class="btn btn-primary">Add</button>
+    	</div>
+    	{{/autoForm}}
+    	
+  </div>
+</template>

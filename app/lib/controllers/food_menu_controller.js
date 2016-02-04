@@ -6,6 +6,7 @@ FoodMenuController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
+    this.subscribe('menus');
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -23,6 +24,7 @@ FoodMenuController = RouteController.extend({
   // return Posts.findOne({_id: this.params._id});
   
   data: function () {
+    return Menus.findOne({_id: this.params._id});
   },
   
   // You can provide any of the hook options
@@ -51,5 +53,18 @@ FoodMenuController = RouteController.extend({
   onAfterAction: function () {
   },
   onStop: function () {
-  }
+  },
+
+  create: function() {
+    this.render('AddMenuItem', {})
+  },
+
+  list: function() {
+    this.render('Menu', {});
+  },
+
+  edit: function() {
+    this.render('EditMenuItem', {});
+  } 
+
 });

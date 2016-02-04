@@ -21,6 +21,15 @@ Meteor.methods({
  		 })
 	},
 
+  userUpdate: function(id, newEmail, newAccountType){
+    Meteor.users.update(id, {
+      $set: {
+        email: newEmail,
+        profile: {type: newAccountType}
+      }
+    });
+  },
+ 
 	configureFreshAccount: function(currentUserId){
 		Meteor.users.update(currentUserId, {$set: {"profile.businessName": "THISBUSINESS"}});
 	}

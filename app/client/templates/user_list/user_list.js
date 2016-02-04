@@ -11,20 +11,22 @@ Template.UserList.events({
 
 	'click .userAccounts': function(){
 		Session.set('selectedUser', this._id);
-		var selectedUser = Session.get('selectedUser');
-		console.log("In the .userAccounts");
-		console.log(selectedUser);
+		//var selectedUser = Session.get('selectedUser');
+		//console.log("In the .userAccounts");
+		//console.log(selectedUser);
 	},
 
 	'click .theDeleteButton': function(e){
 		e.preventDefault();
-		console.log("Delete button pressed");
+		//console.log("Delete button pressed");
 		var userId = this._id;
 		var selectedUser = Session.get('selectedUser');
 		if(userId == selectedUser){
-			console.log("This is the guy getting deleted");
-			console.log(selectedUser);
-			Meteor.users.remove({_id:selectedUser});
+			//console.log("This is the guy getting deleted");
+			//console.log(selectedUser);
+			if(confirm('Are you sure you want to delete user?')) {
+				Meteor.users.remove({_id:selectedUser});
+			}
 		}
 	}
 

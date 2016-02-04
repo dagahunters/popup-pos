@@ -37,7 +37,11 @@ Events.attachSchema(new SimpleSchema({
   },
   date: {
     type: Date,
-    label: "Date Of Event"
+    label: "Date Of Event",
+    autoform: {
+          type: "datetime-local",
+          //timezoneId: "America/New_York"
+    }
   },
   confirmed: {
     type: Boolean,

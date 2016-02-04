@@ -2,6 +2,17 @@
 /* ListEvents: Event Handlers */
 /*****************************************************************************/
 Template.ListEvents.events({
+	'click .currentEvent': function(event){
+		//event.preventDefault();
+		//var currentEventId = this._id;
+		//var currentEventName = Events.findOne(currentEventId).name;
+		//console.log(currentEventName);
+		Session.set('currentEvent', this._id);
+		console.log(Session.get('currentEvent'));
+		//var displayIt = Session.get('currentEvent');
+		//console.log("This is gotten from the Session.");
+		//console.log(displayIt);
+	}
 });
 
 /*****************************************************************************/
@@ -16,8 +27,7 @@ Template.ListEvents.helpers({
 		else{
 			var businessType = Meteor.user().profile.businessName;	// Otherwise, businessType gets assigned the profile.businessName of the regular child user
 		}
-
-		return Events.find({createdFromAccount: businessType}, {sort: {createdAt: -1}});
+		return Events.find({createdFromAccount: businessType}, {sort: {date: -1}});
 
 	},
 

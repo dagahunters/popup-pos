@@ -1,6 +1,6 @@
 <template name="EditEvent">
   <h1>Edit Event</h1>
-  {{> quickForm collection="Events" doc=this id="editEventForm" type="update" omitFields="createdBy, createdAt" buttonContent="Update"}}
+  {{> quickForm collection="Events" doc=this id="editEventForm" type="update" omitFields="createdBy, createdAt, createdFromAccount" buttonContent="Update"}}
   <hr>
   {{> quickRemoveButton collection="Events" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
 </template>

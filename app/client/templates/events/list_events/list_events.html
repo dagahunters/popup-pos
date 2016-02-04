@@ -12,6 +12,7 @@
     <table class="table table-hover">
     	<thead>
     		<tr>
+                <th>Select</th>
     			<th>Party Name</th>
                 <th>Guest Count</th>
                 <th>Courses</th>
@@ -25,14 +26,16 @@
     	<tbody>
     		{{#each events}}       
             <tr>
+                <td>{{#linkTo route="viewEvent"}}<button type="button" class="currentEvent btn btn-default">View Event</button>{{/linkTo}}</td>
                 <td>{{name}}</td>
                 <td>{{guestCount}}</td>
                 <td>{{courses}}</td>
                 <td>{{date}}</td>
                 <td>{{#if confirmed}}Yes{{else}}No{{/if}}</td>
                 {{#if isManager}}
-                <td>{{#linkTo route='editEvent'}}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>{{/linkTo}}</td>
+                <td>{{#linkTo route='editEvent'}}<span class="glyphicon glyphicon-edit" aria-hidden="false"></span>{{/linkTo}}</td>
                 {{/if}}
+                
             </tr>
             {{/each}}
     	</tbody>

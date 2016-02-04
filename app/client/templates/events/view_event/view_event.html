@@ -1,0 +1,30 @@
+<template name="ViewEvent">
+  <h1>Tables for: {{selectedEvent.name}}</h1>
+  {{#linkTo route="createTable"}}
+  	<button type="button" class="btn btn-primary">
+  	Create New Table
+  	</button>
+  {{/linkTo}}
+
+  <table class="table table-hover">
+  	<thead>
+  		<tr>
+  			<th>Open Table</th>
+  			<th>Table Name</th>
+  			<th>Guest Count</th>
+  			<th>Edit</th>
+  		</tr>
+  	</thead>
+
+  	<tbody>
+  		{{#each tables}}
+  			<tr>
+  				<td>{{#linkTo route="openTable"}}<button type="button" class="btn btn-default">View Table</button>{{/linkTo}}</td>
+  				<td>{{tableName}}</td>
+  				<td>{{guestCount}}</td>
+  				<td>{{#linkTo route="editTable"}}<span class="selectedTable glyphicon glyphicon-edit" aria-hidden="false"></span>{{/linkTo}}</td>
+  			</tr>
+  		{{/each}}
+  	</tbody>
+  	</table>
+</template>

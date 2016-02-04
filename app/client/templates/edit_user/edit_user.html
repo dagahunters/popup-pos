@@ -1,5 +1,19 @@
 <template name="EditUser">
   <div class="edit-user">
-    <h1>This is the user to edit: {{getTheUser.profile.type}}</h1>
+    <h1>This is the user to edit: {{getTheUserEmail}}</h1> 
+    <form class="EditAUser">
+	<p><h3><span class="label label-default">Email:</span> <input type="email" name="email" placeholder={{getTheUserEmail}}></h3></p>
+        <p><h3><span class="label label-default">Password:</span> <input type="password" name="password"></h3></p>
+        <p><h3><span class="label label-default">Confirm Password:</span> <input type="password" name="confirmPassword"></h3></p>
+        <p><h3><span class="label label-default">Account Type:</span></h3> 
+        	<select class="form-control" name ="accountType">
+        		<option value="Server">Server</option>
+        		<option value="Chef">Chef</option>
+        		<option value="Manager">Manager</option>
+        	</select>
+        	</p>
+        <p><input type="submit" class="btn btn-primary" value="Update"></p>
+
+    </form>
   </div>
 </template>

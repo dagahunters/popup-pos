@@ -34,3 +34,12 @@ Meteor.users.allow({						//allows the remove function to work only if profile.t
 			return true;
 	}
 })
+
+
+Meteor.publish('menus', function () {
+  return Menus.find();
+});
+
+Meteor.publish('tables', function () {
+  return Tables.find();
+});
