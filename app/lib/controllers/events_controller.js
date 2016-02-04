@@ -79,5 +79,9 @@ EventsController = RouteController.extend({
   editTable:function(){
     this.render('EditTable', {});
   },
+
+  chooseMenu:function(){
+    this.render('ChooseMenu', {});
+  },
   
 });

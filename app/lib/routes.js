@@ -138,6 +138,13 @@ Router.route('/editTable/:_id',{
 	where: 'client'
 });
 
+Router.route('chooseMenu', {
+	name: 'chooseMenu',
+	controller: 'EventsController',
+	action: 'chooseMenu',
+	where: 'client'
+});
+
 /*  authorize: {
     deny: function() {
       if Meteor.user().admin

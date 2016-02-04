@@ -8,7 +8,7 @@ Template.AddTable.events({
 AutoForm.hooks({
 	addTableForm: {
 		onSuccess: function(doc)  {
-			var eventId = Session.get('currentEvent')
+			var eventId = Session.get('currentEvent');
 			Router.go('viewEvent', {_id: eventId});
 		}
 		//router.go('studentDetail',{ _id: this.docId });
