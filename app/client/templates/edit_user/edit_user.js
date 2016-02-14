@@ -4,7 +4,7 @@
 Template.EditUser.events({
 
 	'submit form': function(event){
-		console.log("Made it in here");
+		//console.log("Made it in here");
         event.preventDefault();
         var currentUserId = Meteor.userId();
         var selectedUser = Session.get('selectedUser');

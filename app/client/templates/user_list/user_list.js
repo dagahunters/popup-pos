@@ -3,10 +3,9 @@
 /*****************************************************************************/
 Template.UserList.events({
 	'click .deleteThisGuy': function(){
-
 		e.preventDefault();
-		console.log("its been hit");
-		console.log(Meteor.user().emails[0].address);
+		// console.log("its been hit");
+		// console.log(Meteor.user().emails[0].address);
 	},
 
 	'click .userAccounts': function(){
@@ -54,15 +53,15 @@ Template.UserList.helpers({
 		var userId = this._id;
 		var selectedUser = Session.get('selectedUser');
 		if(userId == selectedUser){
-			console.log("This is the guy getting deleted");
-			console.log(selectedUser);
+			// console.log("This is the guy getting deleted");
+			// console.log(selectedUser);
 
 		}
 	},
 
 	'notManager':function(){
 		var currentUserId = Meteor.userId();
-		console.log(Meteor.user(currentUserId).profile);
+		// console.log(Meteor.user(currentUserId).profile);
 		if (Meteor.user(currentUserId).profile.type == "Server"){
 			return true;
 		}

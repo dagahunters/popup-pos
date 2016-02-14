@@ -1,0 +1,75 @@
+<template name="ViewCover">
+  <div class="view-cover">
+  	<button type="button" id="backToTable" class="btn btn-primary">Back to Table</button>
+    <h1>Table: {{getCurrentTable}}</h1>
+    <h3>Position: {{getCurrentPosition}}</h3>
+    <h4><input type="checkbox" id="hasAllergy"> Allergy</h4>
+    {{#if hasAllergy}}
+    <p><h4><span class="label label-default">Type of allergy</span><input type="text" class="form-control" placeholder="Allergy" name="theAllergy"></h4></p>
+    {{/if}}
+    <table id="appTable" class="table table-hover">
+    	<thead>
+    		<tr>
+    			<th>Appetizers</th>
+    		</tr>
+    	</thead>
+
+    	<tbody>
+    		{{#each apps}}
+    			<tr class ="appItem {{selectedApp}}">
+    				<td>{{itemName}}</td>
+    			</tr>
+    		{{/each}}
+    	</tbody>
+    </table>
+
+<table id="mainTable" class="table table-hover">
+    	<thead>
+    		<tr>
+    			<th>Mains</th>
+    		</tr>
+    	</thead>
+
+    	<tbody>
+    		{{#each mains}}
+    			<tr class="mainItem {{selectedMain}}">
+    				<td>{{itemName}}</td>
+    			</tr>
+    		{{/each}}
+    	</tbody>
+    </table>
+
+<table id="dessertTable" class="table table-hover">
+    	<thead>
+    		<tr>
+    			<th>Desserts</th>
+    		</tr>
+    	</thead>
+
+    	<tbody>
+    		{{#each desserts}}
+    			<tr class="dessertItem {{selectedDessert}}">
+    				<td>{{itemName}}</td>
+    			</tr>
+    		{{/each}}
+    	</tbody>
+    </table>
+
+<table id="sideTable" class="table table-hover">
+    	<thead>
+    		<tr>
+    			<th>Sides</th>
+    		</tr>
+    	</thead>
+
+    	<tbody>
+    		{{#each sides}}
+    			<tr class="sideItem {{selectedDessert}}">
+    				<td>{{itemName}}</td>
+    			</tr>
+    		{{/each}}
+    	</tbody>
+    </table>
+
+  </div>
+</template>

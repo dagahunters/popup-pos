@@ -2,12 +2,17 @@
 /* AddTable: Event Handlers */
 /*****************************************************************************/
 Template.AddTable.events({
+	'click #cancel':function(){
+		var eventId = Session.get('currentEvent');
+		Router.go('viewEvent', {_id: eventId});
+	}
 });
 
 
 AutoForm.hooks({
 	addTableForm: {
 		onSuccess: function(doc)  {
+			
 			var eventId = Session.get('currentEvent');
 			Router.go('viewEvent', {_id: eventId});
 		}

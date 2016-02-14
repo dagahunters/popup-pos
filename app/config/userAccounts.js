@@ -3,6 +3,7 @@
 AccountsTemplates.configure({
 	//showAddRemoveServices: false;
 	//hideSignUpLink: true
+	onLogoutHook: function(){Router.go('/');}
 });
 
 AccountsTemplates.addFields([

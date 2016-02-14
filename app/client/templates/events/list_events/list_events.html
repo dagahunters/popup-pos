@@ -17,6 +17,7 @@
                 <th>Guest Count</th>
                 <th>Courses</th>
                 <th>Date</th>
+                <th>Type</th>
                 <th>Confirmed</th>
                 {{#if isManager}}
                 <th>Edit</th>
@@ -31,6 +32,7 @@
                 <td>{{guestCount}}</td>
                 <td>{{courses}}</td>
                 <td>{{date}}</td>
+                <td>{{eventType}}</td>
                 <td>{{#if confirmed}}Yes{{else}}No{{/if}}</td>
                 {{#if isManager}}
                 <td>{{#linkTo route='editEvent'}}<span class="glyphicon glyphicon-edit" aria-hidden="false"></span>{{/linkTo}}</td>

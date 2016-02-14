@@ -27,7 +27,7 @@ Template.ListEvents.helpers({
 		else{
 			var businessType = Meteor.user().profile.businessName;	// Otherwise, businessType gets assigned the profile.businessName of the regular child user
 		}
-		return Events.find({createdFromAccount: businessType}, {sort: {date: -1}});
+		return Events.find({createdFromAccount: businessType}, {sort: {date: 1}});
 
 	},
 

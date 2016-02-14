@@ -64,6 +64,7 @@ Schema.tables = new SimpleSchema({
   createdForEvent: {
     type: String,
     label: "Event Id: DO NOT ALTER",
+
     /*autoValue:function(){
       //console.log(Session.get('currentEvent'));
       var currentEventId = Session.get('currentEvent');

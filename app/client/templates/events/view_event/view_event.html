@@ -23,7 +23,7 @@
   	<tbody>
   		{{#each tables}}
   			<tr>
-  				<td>{{#linkTo route="openTable"}}<button type="button" class="btn btn-default">View Table</button>{{/linkTo}}</td>
+  				<td>{{#linkTo route="viewTable"}}<button type="button" class="selectedTable btn btn-default">View Table</button>{{/linkTo}}</td>
   				<td>{{tableName}}</td>
   				<td>{{guestCount}}</td>
   				<td>{{#linkTo route="editTable"}}<span class="selectedTable glyphicon glyphicon-edit" aria-hidden="false"></span>{{/linkTo}}</td>

@@ -43,6 +43,12 @@ Events.attachSchema(new SimpleSchema({
           //timezoneId: "America/New_York"
     }
   },
+  eventType: {
+    type: String,
+    label: "Event Type",
+    allowedValues: ['Lunch', 'Brunch', 'Dinner'],
+    optional: false
+  },
   confirmed: {
     type: Boolean,
     label: "confirmed?",

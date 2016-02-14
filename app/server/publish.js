@@ -43,3 +43,11 @@ Meteor.publish('menus', function () {
 Meteor.publish('tables', function () {
   return Tables.find();
 });
+
+Meteor.publish('selectedMenuItems', function () {
+  return SelectedMenuItems.find();
+});
+
+Meteor.publish('covers', function () {
+  return Covers.find();
+});

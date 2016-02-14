@@ -1,0 +1,43 @@
+<template name="ViewTable">
+  <div class="view-table">
+  	<div>
+  		<button type="button" id="back" class="btn btn-primary">Back to Event</button>
+  	</div>
+    <h1>Event: {{getEventName}}</h1>
+    <h1>Table: {{getTableName}}</h1>
+    <table class="table table-hover">
+    	<thead>
+    		<tr>
+    		<th>Edit</th>
+    		<th>Guest</th>
+    		<th>Appetizer</th>
+    		<th>Main</th>
+    		<th>Dessert</th>
+    		<th>Allergy</th>
+    		<th>Special Note</th>
+    		<th>Status</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		{{#each theCovers}}
+    			<tr class="{{isAllergic}}">
+    				<td>{{#linkTo route="viewCover"}}<button type="button" class="selectedCover btn btn-primary">Edit</button>{{/linkTo}}</td>
+    				<td>{{coverNumber}}</td>
+    				<td>{{appetizer}}</td>
+    				<td>{{main}}</td>
+    				<td>{{dessert}}</td>
+    				<td>{{allergy}}</td>
+    				<td>{{notes}}</td>
+    				<td><input type="checkbox" class="theCheckbox" value={{isChecked}} checked={{isChecked}}></td>
+    			</tr>
+    		{{/each}}
+    	</tbody>
+    </table>
+    <footer>
+    <p>E</p>
+    <p>N</p>
+    <p>D</p>
+    
+    </footer>
+  </div>
+</template>
