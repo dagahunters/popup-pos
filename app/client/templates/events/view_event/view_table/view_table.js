@@ -14,7 +14,8 @@ Template.ViewTable.events({
 	How around this?*/
 
 	'click .selectedCover': function(){
-		var coverId = Session.set('currentCover', this._id);
+		Session.set('currentCover', this._id);
+		var coverId = Session.get('currentCover');
 		console.log("This is the currentCover", coverId);
 	}
 });
@@ -44,12 +45,15 @@ Template.ViewTable.helpers({
 
 	'isAllergic':function(){
 		var thisCoverId = this._id;
-		var allergicId = Session.get('hasAllergyId');
+		if(AllergyList.findOne({allergicGuest: thisCoverId})){
+			return 'allergyHighlight';
+		}
+		/*var allergicId = Session.get('hasAllergyId');
 		console.log("The id of isAllergic", allergicId);
 		console.log('The is of thisCover', thisCoverId);
 		if (thisCoverId == allergicId){
 			return 'allergyHighlight';
-		}
+		}*/
 	},
 
 });

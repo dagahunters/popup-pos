@@ -67,7 +67,9 @@ Template.Adduser.events({
         //console.log(accountType);
         if(password == confirmPassword){
             Meteor.call('createNewUser', email, password, accountType, accountName);  //This calls createUser on the server side so that the user is not automatically logged in.
-            /*Accounts.createUser({
+            /*
+            The above call to createNewUser performs the following function but calls it from the method.js file on the server
+            Accounts.createUser({
                 email: email,
                 password: password,
                 profile: {

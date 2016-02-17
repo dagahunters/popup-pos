@@ -51,3 +51,7 @@ Meteor.publish('selectedMenuItems', function () {
 Meteor.publish('covers', function () {
   return Covers.find();
 });
+
+Meteor.publish('allergyList', function () {
+  return AllergyList.find();
+});

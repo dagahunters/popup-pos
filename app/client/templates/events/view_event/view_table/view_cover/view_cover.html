@@ -3,9 +3,12 @@
   	<button type="button" id="backToTable" class="btn btn-primary">Back to Table</button>
     <h1>Table: {{getCurrentTable}}</h1>
     <h3>Position: {{getCurrentPosition}}</h3>
-    <h4><input type="checkbox" id="hasAllergy"> Allergy</h4>
-    {{#if hasAllergy}}
-    <p><h4><span class="label label-default">Type of allergy</span><input type="text" class="form-control" placeholder="Allergy" name="theAllergy"></h4></p>
+    <h4><input type="checkbox" id="hasAllergy" value="{{isChecked}}" checked="{{isChecked}}"> Allergy</h4>
+    {{#if isChecked}}
+    <form class="specifyAllergy">
+    	<p><h4><span class="label label-default">Type of allergy</span><input type="text" class="form-control" placeholder="Allergy" name="theAllergy" value="{{getAllergy}}"></h4></p>
+    	<input type="submit" class="btn btn-primary" value="Enter Allergy">
+    </form>
     {{/if}}
     <table id="appTable" class="table table-hover">
     	<thead>
