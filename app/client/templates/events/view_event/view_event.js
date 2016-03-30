@@ -6,7 +6,16 @@ Template.ViewEvent.events({
 		Session.set('selectedTable', this._id);
 		console.log("This is the selected table");
 		console.log(Session.get('selectedTable'));
-	}
+	},
+
+	'change #seeMenuBox': function(){
+		if (Session.get('showMenu') == "show"){
+			Session.set('showMenu', "hide");
+		}
+		else
+			(Session.set('showMenu', "show"));
+	},
+
 
 });
 
@@ -32,6 +41,43 @@ Template.ViewEvent.helpers({
 		return Tables.find({createdForEvent: currentEvent}, {sort: {tableName: 1}});
 
 	},
+
+	'tallyList': function(){
+		var currentEvent = Session.get('currentEvent');
+		return ItemCounts.find({event: currentEvent}, {sort: {order: 1}});
+	},
+
+
+	'foodItems': function() {
+		var currentEvent = Session.get('currentEvent');
+		var currUser = Meteor.userId();
+		var accountCreator = Meteor.user(currUser).profile.businessName; 	
+		return SelectedMenuItems.find({createdFromAccount: accountCreator, eventId: currentEvent});
+	},
+
+	'isChecked': function() {
+		if (Session.get('showMenu') == "show"){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	},
+
+	'isManager': function() {
+		var currentUserId = Meteor.userId();
+		// console.log("In the master layout");
+		// console.log(Meteor.user(currentUserId).profile.type);
+		if (Meteor.user(currentUserId).profile.type == "Server"){
+			return false;
+		}
+		else{
+			return true;
+		}
+	},
+
+
 
 });
 

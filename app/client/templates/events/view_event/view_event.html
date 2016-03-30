@@ -1,15 +1,64 @@
 <template name="ViewEvent">
-  <h1>Tables for: {{selectedEvent.name}}</h1>
+
+<h4><input type="checkbox" name="seeMenu" id="seeMenuBox" value="{{isChecked}}" checked="{{isChecked}}"> Show Menu</h4>
+{{#if isChecked}}
+  <div><h3>Menu for: {{selectedEvent.name}}</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Food Item</th>
+          <th>Total Event Count</th>
+          <th>Temps</th>
+       </tr>
+     </thead>
+
+      <tbody>
+       {{#each tallyList}}
+        <tr>
+          <td>{{appetizer}} {{main}} {{dessert}}</td>
+          <td>{{tally}}</td>
+          <td>
+            {{#if blackNblue}}
+                Black N Blue: {{blackNblue}} 
+            {{/if}}
+            {{#if rare}}
+                <br> Rare: {{rare}}
+            {{/if}} 
+            {{#if medRare}}
+                <br> Medium Rare: {{medRare}} 
+            {{/if}}
+            {{#if medium}}
+                <br> Medium: {{medium}} 
+            {{/if}}
+            {{#if medWell}}
+               <br> Med Well: {{medWell}} 
+            {{/if}}
+            {{#if well}}
+               <br> Well: {{well}}
+            {{/if}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{/if}}
+
+  <div> <h3>Tables for: {{selectedEvent.name}}</h3>
   {{#linkTo route="createTable"}}
   	<button type="button" class="btn btn-primary">
   	Create New Table
   	</button>
   {{/linkTo}}
 
+  {{#if isManager}}
   {{#linkTo route="chooseMenu"}}
   	<button type="button" class="btn btn-primary">Select Menu</button>
-
   {{/linkTo}}
+  {{/if}}
+
+
+  </div>
   <table class="table table-hover">
   	<thead>
   		<tr>

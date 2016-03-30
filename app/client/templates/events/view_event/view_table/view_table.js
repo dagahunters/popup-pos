@@ -17,7 +17,40 @@ Template.ViewTable.events({
 		Session.set('currentCover', this._id);
 		var coverId = Session.get('currentCover');
 		console.log("This is the currentCover", coverId);
-	}
+	},
+
+	'change #seeMenuBox': function(){
+		if (Session.get('showMenu') == "show"){
+			Session.set('showMenu', "hide");
+		}
+		else
+			(Session.set('showMenu', "show"));
+	},
+
+	'change #seeMenuBox': function(){
+		if (Session.get('showMenu') == "show"){
+			Session.set('showMenu', "hide");
+		}
+		else
+			(Session.set('showMenu', "show"));
+	},
+
+	'click .guests': function(){
+		Session.set('sortBy', "coverNumber");
+	},
+
+	'click .apps': function(){
+		Session.set('sortBy', "appetizer");
+	},
+
+	'click .mains': function(){
+		Session.set('sortBy', "main");
+	},
+
+	'click .desserts': function(){
+		Session.set('sortBy', "dessert");
+	},
+
 });
 
 /*****************************************************************************/
@@ -27,7 +60,39 @@ Template.ViewTable.helpers({
 	'theCovers':function(){
 		var tableId = Session.get('selectedTable');
 		var eventId = Session.get('currentEvent');
-		return Covers.find({table: tableId, event: eventId}, {sort: {coverNumber: 1}});
+		var orderOfSort = Session.get('sortBy');
+		console.log("This is the sortBy: ", orderOfSort);
+		// return Covers.find({table: tableId, event: eventId}, {sort: {coverNumber: 1}});
+		if (orderOfSort == "coverNumber"){
+			return Covers.find({table: tableId, event: eventId}, {sort: {coverNumber: 1}});
+		}
+		else if(orderOfSort == "appetizer"){
+			return Covers.find({table: tableId, event: eventId}, {sort: {appetizer: 1, coverNumber: 1}});
+		}
+		else if(orderOfSort == "main"){
+			return Covers.find({table: tableId, event: eventId}, {sort: {main: 1, coverNumber: 1}});
+		}
+		else if(orderOfSort == "dessert"){
+			return Covers.find({table: tableId, event: eventId}, {sort: {dessert: 1, coverNumber: 1}});
+		}
+	},
+
+	'theApps': function(){
+		var tableId = Session.get('selectedTable');
+		var eventId = Session.get('currentEvent');
+		return Covers.find({table: tableId, event: eventId}, {sort: {appetizer: 1}});
+	},
+
+	'theMains': function(){
+		var tableId = Session.get('selectedTable');
+		var eventId = Session.get('currentEvent');
+		return Covers.find({table: tableId, event: eventId}, {sort: {main: 1}});
+	},
+
+	'theDesserts': function(){
+		var tableId = Session.get('selectedTable');
+		var eventId = Session.get('currentEvent');
+		return Covers.find({table: tableId, event: eventId}, {sort: {dessert: 1}});
 	},
 
 	'getEventName':function() {
@@ -56,6 +121,42 @@ Template.ViewTable.helpers({
 		}*/
 	},
 
+	'foodItems': function() {
+		var currentEvent = Session.get('currentEvent');
+		var currUser = Meteor.userId();
+		var accountCreator = Meteor.user(currUser).profile.businessName; 	
+		return SelectedMenuItems.find({createdFromAccount: accountCreator, eventId: currentEvent});
+	},
+
+	'tableTallyList': function(){
+		var currentTable = Session.get('selectedTable');
+		return ItemCounts.find({table: currentTable}, {sort: {order: 1}});
+	},
+
+
+	'theMenus': function(){
+		return Menus.find({itemName: chosenMain, takesTemp: "true"}); 
+	},
+
+
+	// 'covers': function() {
+	// 	var currentTable = Session.get('selectedTable');
+	// 	return Covers.find({table: currentTable});
+	// },
+
+	'isChecked': function() {
+		if (Session.get('showMenu') == "show"){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	},
+
+
+
+
 });
 
 /*****************************************************************************/
@@ -75,10 +176,15 @@ Template.ViewTable.onCreated(function () {
 				event: eventId,
 				coverNumber: (i+1),
 				appetizer: "",
+				appTemp: "",
 				main: "",
+				mainTemp: "",
 				dessert: "",
 				allergy: "",
-				notes: ""
+				appNotes: "",
+				mainNotes: "",
+				dessertNotes: "",
+				
 			})
 		}
 	}
@@ -93,7 +199,9 @@ Template.ViewTable.onCreated(function () {
 						event: eventId,
 						coverNumber: (i + 1),
 						appetizer: "",
+						appTemp: "",
 						main: "",
+						mainTemp: "",
 						dessert: "",
 						allergy: "",
 						notes: ""
@@ -114,6 +222,9 @@ Template.ViewTable.onCreated(function () {
 });
 
 Template.ViewTable.onRendered(function () {
+
+	Session.set('sortBy', "coverNumber");
+	console.log("On Rendered the sort is: ", Session.get('sortBy'));
 });
 
 Template.ViewTable.onDestroyed(function () {

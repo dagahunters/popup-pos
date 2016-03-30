@@ -1,19 +1,20 @@
 <template name="ViewCover">
   <div class="view-cover">
-  	<button type="button" id="backToTable" class="btn btn-primary">Back to Table</button>
+  
     <h1>Table: {{getCurrentTable}}</h1>
     <h3>Position: {{getCurrentPosition}}</h3>
     <h4><input type="checkbox" id="hasAllergy" value="{{isChecked}}" checked="{{isChecked}}"> Allergy</h4>
     {{#if isChecked}}
     <form class="specifyAllergy">
     	<p><h4><span class="label label-default">Type of allergy</span><input type="text" class="form-control" placeholder="Allergy" name="theAllergy" value="{{getAllergy}}"></h4></p>
-    	<input type="submit" class="btn btn-primary" value="Enter Allergy">
+    	<!-- <input type="submit" class="btn btn-primary" value="Enter Allergy"> This button is not needed since it responds to change. -->
     </form>
     {{/if}}
     <table id="appTable" class="table table-hover">
     	<thead>
     		<tr>
     			<th>Appetizers</th>
+                <!-- <th>Temperature</th> -->
     		</tr>
     	</thead>
 
@@ -21,15 +22,34 @@
     		{{#each apps}}
     			<tr class ="appItem {{selectedApp}}">
     				<td>{{itemName}}</td>
+                    {{#if takesTemp}}
+                            <td>
+                                <select name="theTemps" id="appTempSelect">
+                                    {{#each tempNames}}
+                                        <option value="{{this}}">{{this}}</option> 
+                                    {{/each}}
+                                 </select>
+                            </td>
+                           
+                    {{else}}
+                        <td></td>
+                    {{/if}}
     			</tr>
     		{{/each}}
     	</tbody>
     </table>
 
+    <div>
+        App Notes: <input type="text" name="appNotes" label="Notes: " placeholder="Modifications" id="appMods">
+
+        <button type="button" class="btn btn-primary" id="clearAppMods">Clear</button>
+    </div>
+
 <table id="mainTable" class="table table-hover">
     	<thead>
     		<tr>
     			<th>Mains</th>
+                
     		</tr>
     	</thead>
 
@@ -37,10 +57,28 @@
     		{{#each mains}}
     			<tr class="mainItem {{selectedMain}}">
     				<td>{{itemName}}</td>
+                        {{#if takesTemp}}  
+                            <td>
+                                <select name="theTemps" id="mainTempSelect" >
+                                    {{#each tempNames}}
+                                        <option value="{{this}}"> {{this}}</option> 
+                                    {{/each}}
+                                 </select>
+                            </td>
+                           
+                    {{else}}
+                        <td></td>
+                    {{/if}}
     			</tr>
     		{{/each}}
     	</tbody>
     </table>
+
+    <div>
+        Main Notes: <input type="text" name="mainNotes" label="Notes: " placeholder="Modifications" id="mainMods">
+
+        <button type="button" class="btn btn-primary" id="clearMainMods">Clear</button>
+    </div>
 
 <table id="dessertTable" class="table table-hover">
     	<thead>
@@ -58,21 +96,14 @@
     	</tbody>
     </table>
 
-<table id="sideTable" class="table table-hover">
-    	<thead>
-    		<tr>
-    			<th>Sides</th>
-    		</tr>
-    	</thead>
+<div>
+        Dessert Notes: <input type="text" name="dessertNotes" label="Notes: " placeholder="Modifications" id="dessertMods">
+        <button type="button" class="btn btn-primary" id="clearDessertMods">Clear</button>
+    </div>
 
-    	<tbody>
-    		{{#each sides}}
-    			<tr class="sideItem {{selectedDessert}}">
-    				<td>{{itemName}}</td>
-    			</tr>
-    		{{/each}}
-    	</tbody>
-    </table>
+  <p align="right">
+    <button type="button" id="backToTable" class="btn btn-primary">Submit</button>
+  </p>
 
   </div>
 </template>

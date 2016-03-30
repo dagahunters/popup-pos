@@ -3,16 +3,64 @@
   	<div>
   		<button type="button" id="back" class="btn btn-primary">Back to Event</button>
   	</div>
+    <h4><input type="checkbox" name="seeMenu" id="seeMenuBox" value="{{isChecked}}" checked="{{isChecked}}"> Show Menu</h4>
+    {{#if isChecked}}
     <h1>Event: {{getEventName}}</h1>
     <h1>Table: {{getTableName}}</h1>
+    <h3>Selected Menu</h3>
+     <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Food Item</th>
+          <th>Table Count</th>
+          <th>Temps</th>
+       </tr>
+     </thead>
+
+      <tbody>
+       <!-- {{#each foodItems}} -->
+       {{#each tableTallyList}}
+        <tr>
+          <!-- <td>{{itemName}}</td> -->
+          <td>{{appetizer}} {{main}} {{dessert}}</td>
+          <td>{{tally}}</td>
+          <td>
+            {{#if blackNblue}}
+                Black N Blue: {{blackNblue}} 
+            {{/if}}
+            {{#if rare}}
+                <br> Rare: {{rare}}
+            {{/if}} 
+            {{#if medRare}}
+                <br> Medium Rare: {{medRare}} 
+            {{/if}}
+            {{#if medium}}
+                <br> Medium: {{medium}} 
+            {{/if}}
+            {{#if medWell}}
+               <br> Med Well: {{medWell}} 
+            {{/if}}
+            {{#if well}}
+               <br> Well: {{well}}
+            {{/if}}
+          </td>
+            
+
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{/if}}
     <table class="table table-hover">
     	<thead>
     		<tr>
     		<th>Edit</th>
-    		<th>Guest</th>
-    		<th>Appetizer</th>
-    		<th>Main</th>
-    		<th>Dessert</th>
+    		<th class="guests">Guest</th>
+    		<th class="apps">Appetizer</th>
+            <!-- <th>Temp</th> -->
+    		<th class="mains">Main</th>
+            <th>Temp</th>
+    		<th class="desserts">Dessert</th>
     		<th>Allergy</th>
     		<th>Special Note</th>
     		<th>Status</th>
@@ -24,20 +72,33 @@
     				<td>{{#linkTo route="viewCover"}}<button type="button" class="selectedCover btn btn-primary">Edit</button>{{/linkTo}}</td>
     				<td>{{coverNumber}}</td>
     				<td>{{appetizer}}</td>
+                    <!-- <td>{{appTemp}}</td> -->
     				<td>{{main}}</td>
+                    <td>{{mainTemp}}</td>
     				<td>{{dessert}}</td>
     				<td>{{allergy}}</td>
-    				<td>{{notes}}</td>
+    				<td>
+                    {{#if appNotes}}
+                         <p class="modifiedAppHighlight">
+                            <b>Apps: </b>{{appNotes}} 
+                        </p>
+                    {{/if}}
+                    {{#if mainNotes}}
+                        <p class="modifiedMainHighlight">
+                            <b>Mains: </b>{{mainNotes}}
+                        </p>
+                    {{/if}}
+                    {{#if dessertNotes}}
+                        <p class="modifiedDessertHighlight">
+                            <b>Desserts: </b>{{dessertNotes}}
+                        </p>
+                    {{/if}}
+                     </td>
     				<td><input type="checkbox" class="theCheckbox" value={{isChecked}} checked={{isChecked}}></td>
     			</tr>
     		{{/each}}
     	</tbody>
     </table>
-    <footer>
-    <p>E</p>
-    <p>N</p>
-    <p>D</p>
     
-    </footer>
   </div>
 </template>

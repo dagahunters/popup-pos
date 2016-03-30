@@ -12,6 +12,8 @@ EventsController = RouteController.extend({
     this.subscribe('selectedMenuItems');
     this.subscribe('covers');
     this.subscribe('allergyList');
+    this.subscribe('itemCounts');
+    this.subscribe('temps');
   },
   
   // Subscriptions or other things we want to "wait" on. This also

@@ -13,6 +13,7 @@ Template.ChooseMenu.events({
 		if (isChecked){
 			SelectedMenuItems.insert({
 				itemName: Menus.findOne(itemId).itemName,
+				takesTemp: Menus.findOne(itemId).takesTemp,
 				course: Menus.findOne(itemId).course,
 				menuItemId: itemId,
 				eventId: currentEvent,

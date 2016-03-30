@@ -10,6 +10,7 @@ Template.SetupNewAccount.events({
 		var passwordConfirm = $('[name=passwordConfirm]').val();
 		if(password == passwordConfirm){
 			//Meteor.call('createNewUser', email, password, "Manager", companyName);
+			console.log("making a new user");
 			Accounts.createUser({
                 email: email,
                 password: password,

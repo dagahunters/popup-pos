@@ -27,6 +27,12 @@ Menus.attachSchema(new SimpleSchema({
     max: 100
   },
 
+  takesTemp: {
+    type: Boolean,
+    label: "Require Temperature",
+    optional: true
+  },
+
   price: {
     type: Number,
     decimal: true,

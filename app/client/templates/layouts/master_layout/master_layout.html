@@ -21,8 +21,8 @@
 			{{#if currentUser}}
 			<ul class="nav navbar-nav navbar-left">
 				<li>{{#linkTo route="events"}}Events{{/linkTo}}</li>
-        <li>{{#linkTo route="menu"}}Menu{{/linkTo}}</li>
         {{#if isManager}}
+            <li>{{#linkTo route="menu"}}Menu{{/linkTo}}</li>
         	<li>{{#linkTo route="settings"}}Settings{{/linkTo}}</li>
         	<li>{{#linkTo route="userList"}}Users{{/linkTo}}</li>
         {{/if}}
@@ -30,10 +30,13 @@
         <!--<li>{{#linkTo route="admin"}}Admin{{/linkTo}}</li> -->
 			</ul>
 			{{/if}}
-			{{#unless currentUser}}
+
+			<!-- THE CREATE NEW ACCOUNT BUTTON HAS BEEN REMOVED BECAUSE IT STOPPED WORKING.... -->
+
+			<!-- {{#unless currentUser}}
 			<div><span class="navbar-brand navbar-left">{{#linkTo route="setupNewAccount"}}Create New Account{{/linkTo}}</span>
 			</div>
-			{{/unless}}
+			{{/unless}} -->
 			<!--<li class="nav navbar-nav navbar-right">{{> loginButtons}}</li>  The default login-->
 			<!--<li class="nav navbar-nav navbar-right">{{>atForm state='signIn'}}</li> -->
 			<ul class="nav navbar-nav navbar-right">{{> atNavButton}}</ul> <!-- This is the Sign In/Sign Out button_-->
@@ -42,7 +45,7 @@
 
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container" style="margin-bottom: 60px">
 		{{> yield}}
 	</div>
 	<nav class="navbar navbar-default navbar-fixed-bottom">

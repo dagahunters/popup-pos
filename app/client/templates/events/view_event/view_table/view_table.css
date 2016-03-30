@@ -7,3 +7,15 @@
 .allergyHighlight{
 	background-color: red;
 }
+
+.modifiedAppHighlight{
+	background-color: yellow;
+}
+
+.modifiedMainHighlight{
+	background-color: #CCFFFF;
+}
+
+.modifiedDessertHighlight{
+	background-color: #E8ADAA;
+}

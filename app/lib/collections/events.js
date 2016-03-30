@@ -51,7 +51,7 @@ Events.attachSchema(new SimpleSchema({
   },
   confirmed: {
     type: Boolean,
-    label: "confirmed?",
+    label: "Event Confirmed?",
     optional: true
   },
   createdBy: {

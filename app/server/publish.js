@@ -32,7 +32,8 @@ Meteor.users.allow({						//allows the remove function to work only if profile.t
 	remove:function(){
 		if(Meteor.user().profile.type == "Manager")
 			return true;
-	}
+	},
+
 })
 
 
@@ -54,4 +55,12 @@ Meteor.publish('covers', function () {
 
 Meteor.publish('allergyList', function () {
   return AllergyList.find();
+});
+
+Meteor.publish('itemCounts', function () {
+  return ItemCounts.find();
+});
+
+Meteor.publish('temps', function () {
+  return Temps.find();
 });
