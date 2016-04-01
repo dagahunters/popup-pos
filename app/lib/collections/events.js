@@ -37,9 +37,11 @@ Events.attachSchema(new SimpleSchema({
   },
   date: {
     type: Date,
-    label: "Date Of Event",
+    label: "Date Of Event YYYY-MM-DD HH:MM",
     autoform: {
-          type: "datetime-local",
+          //type: "datetime-local",
+          //type: "datetime",
+          type: "date",
           //timezoneId: "America/New_York"
     }
   },
@@ -79,7 +81,8 @@ Events.attachSchema(new SimpleSchema({
       return Meteor.user().profile.businessName;
       }
     }
-  
 
-  }
+  },
+
 }));
+

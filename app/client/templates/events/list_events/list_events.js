@@ -45,6 +45,13 @@ Template.ListEvents.helpers({
 	
 });
 
+Template.registerHelper("localizedDateAndTime", function(date) {
+    
+    if(date)
+    	//return moment(date).tz("America/New_York").format('l LT');
+    	//The utc makes sure the date shows up as correct.
+        return moment(date).utc().format("ddd, MMM Do YYYY");//format('l LT');
+});
 /*****************************************************************************/
 /* ListEvents: Lifecycle Hooks */
 /*****************************************************************************/
